@@ -1,46 +1,64 @@
-const defaultTheme = require('tailwindcss/defaultTheme');
+import { fontFamily } from "tailwindcss/defaultTheme";
 
 /** @type {import('tailwindcss').Config} */
-export default {
-	mode: 'jit',
-	darkMode: 'class',
-	content: ['./src/**/*.{html,js,svelte,ts}'],
+const config = {
+	darkMode: ["class"],
+	content: ["./src/**/*.{html,js,svelte,ts}"],
+  safelist: ["dark"],
 	theme: {
+		container: {
+			center: true,
+			padding: "2rem",
+			screens: {
+				"2xl": "1400px"
+			}
+		},
 		extend: {
 			colors: {
-				background: 'rgb(var(--color-background) / <alpha-value>)',
-				background_light: 'rgb(var(--color-background_light) / <alpha-value>)',
-				background_dark: 'rgb(var(--color-background_dark) / <alpha-value>)',
-				foreground: 'rgb(var(--color-foreground) / <alpha-value>)',
-				foreground_dark: 'rgb(var(--color-foreground_dark) / <alpha-value>)',
-			},
-			typography: ({ theme }) => ({
-				as: {
-					css: {
-						'--tw-prose-body': theme('colors.background_dark'),
-						'--tw-prose-headings': theme('colors.foreground'),
-						'--tw-prose-lead': theme('colors.pink[700]'),
-						'--tw-prose-links': theme('colors.blue[500]'),
-						'--tw-prose-bold': theme('colors.background_dark'),
-						'--tw-prose-counters': theme('colors.pink[600]'),
-						'--tw-prose-bullets': theme('colors.background_dark'),
-						'--tw-prose-hr': theme('colors.pink[300]'),
-						'--tw-prose-quotes': theme('colors.pink[900]'),
-						'--tw-prose-quote-borders': theme('colors.pink[300]'),
-						'--tw-prose-captions': theme('colors.pink[700]'),
-						'--tw-prose-code': theme('colors.background_dark'),
-						'--tw-prose-pre-code': theme('colors.zinc[100]'),
-						'--tw-prose-pre-bg': theme('colors.zinc[700]'),
-						'--tw-prose-th-borders': theme('colors.background_dark'),
-						'--tw-prose-td-borders': theme('colors.foreground')
-					}
+				border: "hsl(var(--border) / <alpha-value>)",
+				input: "hsl(var(--input) / <alpha-value>)",
+				ring: "hsl(var(--ring) / <alpha-value>)",
+				background: "hsl(var(--background) / <alpha-value>)",
+				foreground: "hsl(var(--foreground) / <alpha-value>)",
+				primary: {
+					DEFAULT: "hsl(var(--primary) / <alpha-value>)",
+					foreground: "hsl(var(--primary-foreground) / <alpha-value>)"
+				},
+				secondary: {
+					DEFAULT: "hsl(var(--secondary) / <alpha-value>)",
+					foreground: "hsl(var(--secondary-foreground) / <alpha-value>)"
+				},
+				destructive: {
+					DEFAULT: "hsl(var(--destructive) / <alpha-value>)",
+					foreground: "hsl(var(--destructive-foreground) / <alpha-value>)"
+				},
+				muted: {
+					DEFAULT: "hsl(var(--muted) / <alpha-value>)",
+					foreground: "hsl(var(--muted-foreground) / <alpha-value>)"
+				},
+				accent: {
+					DEFAULT: "hsl(var(--accent) / <alpha-value>)",
+					foreground: "hsl(var(--accent-foreground) / <alpha-value>)"
+				},
+				popover: {
+					DEFAULT: "hsl(var(--popover) / <alpha-value>)",
+					foreground: "hsl(var(--popover-foreground) / <alpha-value>)"
+				},
+				card: {
+					DEFAULT: "hsl(var(--card) / <alpha-value>)",
+					foreground: "hsl(var(--card-foreground) / <alpha-value>)"
 				}
-			}),
+			},
+			borderRadius: {
+				lg: "var(--radius)",
+				md: "calc(var(--radius) - 2px)",
+				sm: "calc(var(--radius) - 4px)"
+			},
 			fontFamily: {
-				sans: ['Manrope', defaultTheme.fontFamily.sans],
-				mono: ['Fira Code', defaultTheme.fontFamily.mono]
+				sans: [...fontFamily.sans]
 			}
 		}
 	},
-	plugins: [require('@tailwindcss/typography')]
 };
+
+export default config;

@@ -36,6 +36,10 @@ const config = {
 		}),
 		paths: {
 			base: dev ? '' : process.env.BASE_PATH
+		},
+		alias: {
+			utils: '$lib/utils',
+			components: '$lib/components'
 		}
 	},
 	extensions: ['.svelte', '.md'],
