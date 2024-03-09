@@ -2,23 +2,10 @@
 	import { page } from '$app/stores';
 
 	import Themeswitch from './header/themeswitcher.svelte';
-	import Links from './header/links.svelte';
-	import Menu from './header/menu.svelte';
-
-	let links = [
-		{
-			name: '/blog',
-			href: '/blog'
-		},
-		{
-			name: '/memo',
-			href: '/memo'
-		}
-	];
 </script>
 
 <div
-	class="sticky top-0 z-[9999] inline-flex h-[3rem] w-[100%] items-center justify-between bg-background_dark/50 p-[clamp(1.5rem,1.5rem+3vw,3rem)] px-[3rem] text-foreground saturate-150 backdrop-blur-[20px]"
+	class="bg-background_dark/25 sticky top-0 z-[9999] inline-flex h-[3rem] w-[100%] items-center justify-between p-[clamp(1.5rem,1.5rem+3vw,3rem)] px-[3rem] text-foreground saturate-150 backdrop-blur-[10px]"
 >
 	<a href="/" class="group inline-flex items-center gap-3">
 		<div
@@ -33,10 +20,9 @@
 				: 'text-foreground/70'}">/ async</b
 		></a
 	>
-	<Links {links} />
+	<!-- <Links {links} /> -->
 
-	<section class="inline-flex items-center gap-2">
-		<Menu optionList={links} />
-		<Themeswitch button_name="Theme" optionList={['dark', 'light']} />
+	<section class="z-[10000] inline-flex items-center gap-2">
+		<Themeswitch />
 	</section>
 </div>

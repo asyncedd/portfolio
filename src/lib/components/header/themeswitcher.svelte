@@ -1,97 +1,50 @@
 <script lang="ts">
-	import { browser } from '$app/environment';
-
-	import { Switch } from '$lib/components/ui/switch';
-
-	let currentTheme: boolean | undefined = undefined;
-	export const button_name: string = '';
-
-	browser &&
-		(() => {
-			currentTheme = localStorage.theme == 'dark' ? false : true;
-			// const setTheme = (newTheme: string) => {
-			// 	document.documentElement.className = currentTheme  = newTheme;
-			// };
-
-			window
-				.matchMedia('(prefers-color-scheme: dark)')
-				// .addEventListener('change', (e) => setTheme(e.matches ? 'dark' : 'light'));
-				.addEventListener(
-					'change',
-					() => (document.documentElement.className = currentTheme ? 'dark' : 'light')
-				);
-			// window.addEventListener('storage', (e) => e.key === 'theme' && setTheme(e.newValue || ''));
-			window.addEventListener(
-				'storage',
-				(e) =>
-					e.key === 'theme' &&
-					(document.documentElement.className = currentTheme ? 'dark' : 'light')
-			);
-
-			// const handleGlobalClick = (event: MouseEvent) =>
-			// 	(dropdownOpened =
-			// 		dropdownOpened && !!(event.target as HTMLElement).closest('.dropdown-button-menu-theme'));
-			//
-			// document.addEventListener('click', handleGlobalClick);
-			//
-			// return () => {
-			// 	document.removeEventListener('click', handleGlobalClick);
-			// };
-		})();
+	import { setMode, resetMode } from 'mode-watcher';
+	import { Button } from '$lib/components/ui/button/index.js';
+	import * as DropdownMenu from '$lib/components/ui/dropdown-menu/index.js';
 </script>
 
-<Switch
-	bind:checked={currentTheme}
-	on:click={() => {
-		localStorage.theme = document.documentElement.className = currentTheme ? 'dark' : 'light';
-		console.log(currentTheme);
-	}}
-/>
-
-<!-- <button -->
-<!-- 	class="group inline-flex rounded-full border-[3px] border-zinc-300 p-[0.3rem] dark:border-zinc-700" -->
-<!-- 	on:click={() => { -->
-<!-- 		localStorage.theme = -->
-<!-- 			currentTheme = -->
-<!-- 			document.documentElement.className = -->
-<!-- 				currentTheme == 'dark' ? 'light' : 'dark'; -->
-<!-- 	}} -->
-<!-- > -->
-<!-- 	<div -->
-<!-- 		aria-label="set theme to light" -->
-<!-- 		class="inline-flex w-[100%] items-center justify-between rounded-full bg-zinc-300 p-3 text-left text-[1.1rem] capitalize tracking-wide dark:bg-background/30" -->
-<!-- 	> -->
-<!-- 		<svg -->
-<!-- 			xmlns="http://www.w3.org/2000/svg" -->
-<!-- 			width="1em" -->
-<!-- 			height="1em" -->
-<!-- 			viewBox="0 0 32 32" -->
-<!-- 			class="flex items-center justify-center stroke-foreground" -->
-<!-- 			><path -->
-<!-- 				fill="none" -->
-<!-- 				stroke-linecap="round" -->
-<!-- 				stroke-linejoin="round" -->
-<!-- 				stroke-width="2" -->
-<!-- 				d="M16 6V3M8.929 8.929L6.808 6.808M6 16H3m13 13v-3m9.192-.808l-2.121-2.12M29 16h-3M8.929 23.071l-2.121 2.121M25.192 6.808l-2.12 2.121M22 16a6 6 0 1 1-12 0a6 6 0 0 1 12 0Z" -->
-<!-- 			/></svg -->
-<!-- 		> -->
-<!-- 	</div> -->
-<!-- 	<div -->
-<!-- 		aria-label="set theme to dark" -->
-<!-- 		class="bg-background_dark/50 bg-background_light inline-flex w-[100%] items-center justify-between rounded-full p-3 text-left text-[1.1rem] capitalize tracking-wide dark:bg-zinc-700" -->
-<!-- 	> -->
-<!-- 		<svg -->
-<!-- 			xmlns="http://www.w3.org/2000/svg" -->
-<!-- 			width="1em" -->
-<!-- 			height="1em" -->
-<!-- 			viewBox="0 0 24 24" -->
-<!-- 			class="flex items-center justify-center fill-foreground" -->
-<!-- 			><path -->
-<!-- 				fill-rule="evenodd" -->
-<!-- 				fill="currentTheme" -->
-<!-- 				d="M9.353 3C5.849 4.408 3 7.463 3 11.47A9.53 9.53 0 0 0 12.53 21c4.007 0 7.062-2.849 8.47-6.353C8.17 17.065 8.14 8.14 9.353 3z" -->
-<!-- 				clip-rule="evenodd" -->
-<!-- 			/></svg -->
-<!-- 		> -->
-<!-- 	</div> -->
-<!-- </button> -->
+<DropdownMenu.Root>
+	<DropdownMenu.Trigger asChild let:builder>
+		<Button builders={[builder]} variant="outline" size="icon">
+			<svg
+				xmlns="http://www.w3.org/2000/svg"
+				width="24"
+				height="24"
+				viewBox="0 0 24 24"
+				fill="none"
+				stroke="currentColor"
+				stroke-width="2"
+				stroke-linecap="round"
+				stroke-linejoin="round"
+				class="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0"
+				><circle cx="12" cy="12" r="4" /><path d="M12 2v2" /><path d="M12 20v2" /><path
+					d="m4.93 4.93 1.41 1.41"
+				/><path d="m17.66 17.66 1.41 1.41" /><path d="M2 12h2" /><path d="M20 12h2" /><path
+					d="m6.34 17.66-1.41 1.41"
+				/><path d="m19.07 4.93-1.41 1.41" /></svg
+			>
+			<svg
+				xmlns="http://www.w3.org/2000/svg"
+				width="24"
+				height="24"
+				viewBox="0 0 24 24"
+				fill="none"
+				stroke="currentColor"
+				stroke-width="2"
+				stroke-linecap="round"
+				stroke-linejoin="round"
+				class="absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100"
+				><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z" /><path d="M19 3v4" /><path
+					d="M21 5h-4"
+				/></svg
+			>
+			<span class="sr-only">Toggle theme</span>
+		</Button>
+	</DropdownMenu.Trigger>
+	<DropdownMenu.Content align="end">
+		<DropdownMenu.Item on:click={() => setMode('light')}>Light</DropdownMenu.Item>
+		<DropdownMenu.Item on:click={() => setMode('dark')}>Dark</DropdownMenu.Item>
+		<DropdownMenu.Item on:click={() => resetMode()}>System</DropdownMenu.Item>
+	</DropdownMenu.Content>
+</DropdownMenu.Root>

@@ -43,10 +43,14 @@
   },
   "type": "module",
   "dependencies": {
+    "@tailwindcss/aspect-ratio": "^0.4.2",
     "bits-ui": "^0.19.5",
     "clsx": "^2.1.0",
     "dexie": "next",
     "lucide-svelte": "^0.350.0",
+    "mini-svg-data-uri": "^1.4.4",
+    "mode-watcher": "^0.2.2",
+    "svelte-motion": "^0.12.2",
     "tailwind-merge": "^2.2.1",
     "tailwind-variants": "^0.2.0"
   }
