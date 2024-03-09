@@ -6,6 +6,8 @@
 
 	import PageTransition from './transition.svelte';
 
+	import { ModeWatcher } from 'mode-watcher';
+
 	export let data;
 </script>
 
@@ -13,6 +15,7 @@
 	<title>{data.url}</title>
 </svelte:head>
 
+<ModeWatcher />
 <body class="bg-background font-sans text-[1rem] text-foreground">
 	<div class="min-h-[100svh] max-w-[100svw]">
 		<Header />
