@@ -9,7 +9,7 @@
 	<GridAndDotBackgrounds>
 		<div class="relative">
 			<h2
-				class="text-foreground_dark/85 font-['Josefin Sans Variable'] break-words text-[clamp(1.8rem,1.8rem+1vw,3.3rem)] uppercase"
+				class="text-foreground_dark/85 font-['Inter Variable'] break-words text-[clamp(1.8rem,1.8rem+1vw,3.3rem)] uppercase"
 			>
 				<b
 					>hi, i'm <span
